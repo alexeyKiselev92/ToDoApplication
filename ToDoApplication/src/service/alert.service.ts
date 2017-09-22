@@ -29,4 +29,8 @@ export class AlertService{
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({type: 'error', text: message});
     }
+
+    getMessage(): Observable<any> {
+        return this.subject.asObservable();
+    }
 }
