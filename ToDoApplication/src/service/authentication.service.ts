@@ -11,7 +11,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post('api/authenticate-fake', JSON.stringify({username: username, password: password}))
+        return this.http.post('/api/authenticate', JSON.stringify({username: username, password: password}))
         .map((res: Response) => {
             // tslint:disable-next-line:prefer-const
             let user = res.json();

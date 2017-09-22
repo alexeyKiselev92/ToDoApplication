@@ -79,7 +79,7 @@ export function mockBackEndSimultation(backend: MockBackend, options: BaseReques
                 // tslint:disable-next-line:prefer-const
                 let newUser = JSON.parse(connection.request.getBody());
                 // tslint:disable-next-line:prefer-const
-                let duplicateUser = users.filter(user => user.username === newUser.username);
+                let duplicateUser = users.filter(user => user.username === newUser.username).length;
                 if (duplicateUser) {
                     connection.mockError(new Error('User with username "' + newUser.username + '" is already exist'));
                 }
@@ -127,6 +127,6 @@ export function mockBackEndSimultation(backend: MockBackend, options: BaseReques
 
 export let backendSimulationProvider = {
     provide: Http,
-    deps: [MockBackend, MockConnection, XHRBackend],
-    useFactory: mockBackEndSimultation
+    useFactory: mockBackEndSimultation,
+    deps: [MockBackend, BaseRequestOptions, XHRBackend]
 };
