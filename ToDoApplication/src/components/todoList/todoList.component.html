@@ -1,0 +1,13 @@
+<div class="">
+    <ul>
+        <li *ngFor="let item of tasks" [ngClsss]="{isCompleted: todo.isDone}">
+            <div class="view" (click)="showInfo()">
+                <input class="toogle" type="checkbox" [checked]="todo.isDone" />
+                <label>{{item.title}}</label>
+                <button class="edit"></button>
+                <button class="destroy"></button>
+            </div>
+        </li>
+    </ul>
+    <span></span>
+</div>
